@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f7f2">
+<title>TeachPen — Smartare undervisning</title>
+<style>
+:root{--ink:#102747;--muted:#64748b;--green:#8bb8ff;--paper:#f4f7fb;--line:#dbe4ef;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0}.brand{font-size:1.35rem;font-weight:850;letter-spacing:-.06em}.brand span{display:inline-grid;place-items:center;background:var(--green);width:34px;height:34px;border-radius:11px;margin-right:8px;font-size:1rem}.navlinks{display:flex;gap:26px;color:var(--muted);font-size:.92rem}.nav-cta{background:var(--ink);color:white;padding:12px 18px;border-radius:999px;font-weight:700;font-size:.9rem}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center;padding:65px 0 85px}.eyebrow{display:inline-flex;gap:8px;align-items:center;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:#244f85}.dot{width:8px;height:8px;background:#3978c7;border-radius:50%}h1{font-size:clamp(3.1rem,6vw,5.8rem);line-height:.94;letter-spacing:-.075em;margin:22px 0}h1 em{font-style:normal;color:#2e65a5}.lead{font-size:1.12rem;line-height:1.7;color:var(--muted);max-width:470px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0 18px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 21px;border-radius:999px;font-weight:800;border:1px solid var(--line);cursor:pointer}.btn-primary{background:var(--green);border-color:var(--green)}.btn-light{background:white}.smallnote{font-size:.78rem;color:var(--muted)}
+.product-scene{position:relative;min-height:440px;border-radius:34px;background:#e5edf8;display:grid;place-items:center;overflow:hidden}.orb{position:absolute;width:330px;height:330px;border-radius:50%;background:#cfdef3;top:50px;left:50%;transform:translateX(-50%)}.marker{position:relative;z-index:1;width:min(390px,80%);height:48px;border-radius:28px;background:linear-gradient(180deg,#fff,#e9e9e5);box-shadow:0 24px 34px #354d6b30;transform:rotate(-17deg);display:flex;align-items:center;justify-content:space-between;padding:0 0 0 0;border:1px solid #d6dfeb}.marker:before{content:"";position:absolute;left:-24px;width:34px;height:22px;background:#102747;clip-path:polygon(100% 0,100% 100%,0 50%);border-radius:3px}.marker:after{content:"";position:absolute;right:-19px;width:28px;height:42px;border-radius:5px;background:#102747}.marker-label{font-size:12px;letter-spacing:.12em;font-weight:900;color:#71829a;margin-left:45px}.laser-dot{position:absolute;right:1px;width:9px;height:9px;border-radius:50%;background:#ef4b4b;z-index:2}.stand{position:absolute;bottom:78px;width:250px;height:62px;background:linear-gradient(#fff,#d8ddd3);border-radius:12px 12px 20px 20px;box-shadow:0 15px 25px #354d6b24;transform:perspective(180px) rotateX(8deg)}.stand:before,.stand:after{content:"";position:absolute;top:-36px;width:32px;height:55px;background:#f7faff;border:1px solid #d6dfeb;border-radius:10px 10px 3px 3px}.stand:before{left:24px}.stand:after{right:24px}.tag{position:absolute;top:22px;right:22px;background:white;border-radius:999px;padding:10px 14px;font-size:.8rem;font-weight:800}.float-card{position:absolute;left:22px;bottom:22px;background:#fff;padding:14px 16px;border-radius:16px;box-shadow:0 10px 25px #10274712;font-size:.85rem}.float-card strong{display:block;font-size:1.05rem}
+.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:0 0 82px}.benefit{padding:24px;border:1px solid var(--line);border-radius:22px;background:#fff}.benefit .icon{font-size:1.5rem}.benefit h3{margin:15px 0 8px;font-size:1.08rem}.benefit p{margin:0;color:var(--muted);line-height:1.6;font-size:.92rem}
+.purchase{background:var(--ink);color:#fff;border-radius:32px;padding:48px;display:grid;grid-template-columns:1fr .85fr;gap:35px;align-items:center;margin-bottom:82px}.purchase h2{font-size:clamp(2rem,4vw,3.4rem);letter-spacing:-.06em;line-height:1;margin:15px 0}.purchase p{color:#c1c9c1;line-height:1.7}.price{font-size:3.8rem;letter-spacing:-.07em;font-weight:900;margin:14px 0}.price small{font-size:1rem;letter-spacing:0;color:#c1c9c1;font-weight:500}.checkout{background:#fff;color:var(--ink);padding:25px;border-radius:24px}.checkout h3{margin:0 0 8px}.checkout p{color:var(--muted);font-size:.88rem;margin:0 0 18px}.pay-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pay{border:1px solid var(--line);background:#fff;border-radius:13px;padding:13px 10px;font-weight:850;cursor:pointer}.pay:hover{background:#edf4ff}.pay.full{grid-column:1/-1;background:var(--green);border-color:var(--green)}.payment-note{font-size:.75rem!important;margin-top:13px!important}
+.faq{padding-bottom:75px;display:grid;grid-template-columns:.7fr 1fr;gap:55px}.faq h2{font-size:2.6rem;letter-spacing:-.06em;margin:0}.qa{border-bottom:1px solid var(--line);padding:17px 0}.qa h3{font-size:1rem;margin:0 0 8px}.qa p{color:var(--muted);line-height:1.6;margin:0}
+footer{border-top:1px solid var(--line);padding:25px 0 35px;display:flex;justify-content:space-between;gap:20px;align-items:center;color:var(--muted);font-size:.85rem}.phone{font-weight:850;color:var(--ink)}
+@media(max-width:760px){.navlinks{display:none}.hero{grid-template-columns:1fr;gap:30px;padding:38px 0 55px}.product-scene{min-height:350px}.benefits{grid-template-columns:1fr;padding-bottom:55px}.purchase{grid-template-columns:1fr;padding:28px;margin-bottom:55px}.faq{grid-template-columns:1fr;gap:20px}.wrap{width:min(100% - 28px,1120px)}footer{align-items:flex-start;flex-direction:column}h1{font-size:3.6rem}}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <nav>
+    <a class="brand" href="#"><span>✳</span>TeachPen</a>
+    <div class="navlinks"><a href="#funktioner">Funktioner</a><a href="#kop">Köp</a><a href="#support">Support</a></div>
+    <a class="nav-cta" href="#kop">Köp för 80 kr ↗</a>
+  </nav>
+</header>
+<main>
+<section class="wrap hero">
+  <div>
+    <div class="eyebrow"><span class="dot"></span> Smartare lektioner</div>
+    <h1>En penna.<br><em>Fler möjligheter.</em></h1>
+    <p class="lead">TeachPen kombinerar en whiteboardpenna med en laserpekare i en smidig design. Hållaren som håller allt på plats är 3D-printad.</p>
+    <div class="hero-actions"><a class="btn btn-primary" href="#kop">Skaffa TeachPen — 80 kr <span>→</span></a><a class="btn btn-light" href="#funktioner">Upptäck mer</a></div>
+    <div class="smallnote">Enkel design för klassrummet · Pris: 80 kr</div>
+  </div>
+  <div class="product-scene" aria-label="Illustration av TeachPen och hållare">
+    <div class="orb"></div><div class="tag">TEACHPEN / 01</div>
+    <div class="marker"><span class="marker-label">TEACHPEN</span><span class="laser-dot"></span></div>
+    <div class="stand"></div>
+    <div class="float-card">✦ Smart klassrumsverktyg<strong>Whiteboard + laser</strong></div>
+  </div>
+</section>
+<section class="wrap benefits" id="funktioner">
+  <article class="benefit"><div class="icon">✍️</div><h3>Whiteboardpenna</h3><p>Skriv tydligt på whiteboarden och sudda bort texten när du är klar.</p></article>
+  <article class="benefit"><div class="icon">🔴</div><h3>Laserpekare</h3><p>Peka ut viktiga detaljer på tavlan och hjälp alla att följa med.</p></article>
+  <article class="benefit"><div class="icon">🧩</div><h3>3D-printad hållare</h3><p>En enkel hållare håller pennan på plats när den inte används.</p></article>
+</section>
+<section class="wrap purchase" id="kop">
+  <div><div class="eyebrow" style="color:#8bb8ff">Redo för nästa lektion?</div><h2>Gör undervisningen lite smartare.</h2><p>Beställ TeachPen för ett enkelt fast pris.</p><div class="price">80 kr <small>/ styck</small></div><p style="font-size:.82rem">Frakt och leveranstid bekräftas vid beställning.</p></div>
+  <div class="checkout"><h3>Välj betalningssätt</h3><p>Välj hur du helst vill betala.</p>
+    <div class="pay-options">
+      <button class="pay full" onclick="paymentInfo('Swish')">Swish</button>
+      <button class="pay" onclick="paymentInfo('PayPal')">PayPal</button>
+      <button class="pay" onclick="paymentInfo('Klarna')">Klarna</button>
+    </div>
+    <p class="payment-note" id="pay-message">Betalning aktiveras när säljaren har lagt till sina betalningsuppgifter.</p>
+  </div>
+</section>
+<section class="wrap faq" id="support">
+  <div><div class="eyebrow"><span class="dot"></span> Hjälp & frågor</div><h2>Vi hjälper dig.</h2><p style="color:var(--muted);line-height:1.7">Frågor om produkten eller en beställning? Kontakta oss via telefon.</p><a class="btn btn-primary" href="tel:0764315328">Ring 076-431 53 28 ↗</a></div>
+  <div>
+    <div class="qa"><h3>Vad ingår?</h3><p>TeachPen med whiteboardpenna och laserpekare samt en 3D-printad hållare, enligt den slutliga produktversionen.</p></div>
+    <div class="qa"><h3>Hur mycket kostar den?</h3><p>TeachPen kostar 80 kr per styck. Eventuell frakt tillkommer om det behövs.</p></div>
+    <div class="qa"><h3>Hur betalar jag?</h3><p>Swish, PayPal och Klarna visas som önskade betalningsalternativ. De måste kopplas till riktiga betalningsuppgifter innan kunder kan betala online.</p></div>
+  </div>
+</section>
+</main>
+<footer class="wrap"><a class="brand" href="#"><span>✳</span>TeachPen</a><span>© 2026 TeachPen · Smartare undervisning</span><a class="phone" href="tel:0764315328">Support: 076-431 53 28</a></footer>
+<script>
+function paymentInfo(method){
+  const msg = document.getElementById('pay-message');
+  msg.textContent = method + ' är valt. Kontakta 076-431 53 28 för att slutföra beställningen tills betalningen har kopplats till webbplatsen.';
+}
+</script>
+</body>
+</html>
